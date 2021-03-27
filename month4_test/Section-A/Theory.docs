@@ -1,0 +1,245 @@
+11. Consider the two functions below, Will the return the same thing? Why or why not?
+
+function foo1()
+{
+  return {
+      bar: "hello"
+  };
+}
+
+function foo2()
+{
+  return
+  {
+      bar: "hello"
+  };
+}
+
+Answer:
+
+Surprisingly, these two functions will not return the same thing. Rather:
+console.log("foo1 returns:");
+console.log(foo1());
+console.log("foo2 returns:");
+console.log(foo2());
+will yield:
+foo1 returns:
+Object {bar: "hello"}
+foo2 returns:
+undefined 
+
+Explanation:- Not only is this surprising, but what makes this particularly gnarly is that foo2() returns undefined without any error being thrown.
+The reason for this has to do with the fact that semicolons are technically optional in JavaScript (although omitting them is generally really bad form). 
+As a result, when the line containing the return statement (with nothing else on the line) is encountered in foo2(), a semicolon is automatically inserted immediately after the return statement.
+No error is thrown since the remainder of the code is perfectly valid, even though it doesn’t ever get invoked or do anything (it is simply an unused code block that defines a property bar which is equal to the string "hello").
+This behavior also argues for following the convention of placing an opening curly brace at the end of a line in JavaScript, rather than on the beginning of a new line.
+As shown here, this becomes more than just a stylistic preference in JavaScript.
+
+
+12. What is the output of the following code snippet? Also explain the reason behind the result.
+
+	    var number = 0;
+        console.log(number++);
+        console.log(++number);
+        console.log(number);
+
+Answer = it will print  0
+		                2
+		                2
+
+As number ++ will add 1 after printing
+hence num == 0 printed
+In second ++num ; 1 will be added before printing hence num == 2 printed
+Number's value is 2 so, lastly it printed 2.
+
+
+
+13. Find and explain the output of the following:  
+
+	    for(let i = 1; i<5; i++){
+            if(i === 3) continue;
+            console.log(i);}
+
+Ans = It will print 
+			1
+			2
+			4
+As when i === 3 the function does not reach to console and got continue.
+
+
+14. Find and explain the output of the provided code snippet. 
+
+ console.log(typeof typeof 1)
+
+Ans = 
+
+It will return  string
+
+Reason: typeof returns a string, of the type of the value you provided, When you check the value returned by typeof, it will be in string form, like:
+
+'object', 'function', 'string' etc.
+And you are checking the typeof "object", that's why it returned string.
+
+
+15. What is a “closure” in JavaScript? Provide an example.
+
+Ans = 
+
+Closure means that an inner function always has access to the vars and parameters of its outer function, even after the outer function has returned.
+
+
+Inner function can access variables and parameters of an outer function (however, cannot access arguments object of outer function). Consider the following example.
+
+function OuterFunction() {
+
+    var outerVariable = 1;
+
+    function InnerFunction() {
+        alert(outerVariable);
+    }
+
+    InnerFunction();
+}
+
+In the above example, InnerFunction() can access outerVariable.
+
+Now, as per the definition above, InnerFunction() can access outerVariable even if it will be executed separately. Consider the following example.
+
+Example: Closure
+
+function OuterFunction() {
+
+    var outerVariable = 100;
+
+    function InnerFunction() {
+        alert(outerVariable);
+    }
+
+    return InnerFunction;
+}
+var innerFunc = OuterFunction();
+
+innerFunc(); // 100
+In the above example, return InnerFunction; returns InnerFunction from OuterFunction when you call OuterFunction(). 
+A variable innerFunc reference the InnerFunction() only, not the OuterFunction(). So now, when you call innerFunc(), it can still access outerVariable which is declared in OuterFunction(). 
+This is called Closure.
+
+
+16. What is “hoisting” in JavaScript? Write the code transformation after the 1st pass of JavaScript for the following
+code snippet.
+
+var result = concat(first_name, last_name);
+console.log(result);
+
+function concat(x,y) {
+    return x+y;
+}
+
+var first_name = "John";
+var last_name = "Doe";
+
+Ans:
+
+In JavaScript, Hoisting is the default behavior of moving all the declarations at the top of the scope before code execution.
+Basically, it gives us an advantage that no matter where functions and variables are declared, they are moved to the top of their scope regardless of whether their scope is global or local.
+It allows us to call functions before even writing them in our code.
+
+Note: JavaScript only hoists declarations, not the initialisations.
+
+declaration initiation done for var result it will hoisted 
+var first_name = "john";
+var last_name = "Doe";
+
+but x, y values are undefined as not declared
+hoisting happen once variable values declare.
+
+
+
+17. Differentiate between callback functions and anonymous function. Give an example of both.
+
+Ans =
+
+Callback and Anonymous functions are used for passing to other functions like Array.prototype.map() for them to use. It’s a way to pass logic just as you would pass an object. Consider the example code below;
+
+var Arr = [2,3,4,5]
+# Callback function
+function myCallback(x){
+ return x+1;
+}
+console.log(Arr.map(myCallback));
+
+From the code sample above, our callback function is myCallback() , which simply takes an argument x and returns an increment of the argument x+1. We see that our Array.prototype.map() takes as argument our callback function.
+We could also write it as:
+
+var Arr = [2,3,4,5]
+
+# Anonymous function goes directly 
+
+console.log(Arr.map(function(x){ return x+1}));
+
+The code above will also do the job, it uses an anonymous function. I.E, a function without a name function(x){return x+1}. Anonymous functions as the name might imply are functions without names. The function is only refered to once, so a variable name doesn’t need to be wasted on it.
+
+The difference between anonymous and callback function is that;
+
+1-Anonymous function doensn’t need to be named, while calback functions are named
+
+2-Anonymous functions can’t be used anywhere outside the .map() function while callback functions are independent and can be used outside of .map() function above.
+
+3-With anonymous functions, it is difficult to identify in call stacks, which makes debugging trickier. While with callback functions, there are identify in call stacks and easy to debug.
+
+4-Callback function doesn’t take in an argument when called within another function while anonymous function can take in arguments
+
+
+
+18. What is event bubbling and how to stop an event from bubbling?
+
+Answer:
+
+Event Bubbling and Event Capturing is the most used terminology in JavaScript at the time of event flow. 
+In the JavaScript, Event Flow process is completed by three concepts :
+
+Event Capturing.
+Event Target.
+Event Bubbling.
+
+Events :
+
+Events are responsible for interaction of JavaScript with HTML web pages. The general definition of event is any act can occur by someone. In the web development, the definition of events is also same. Events can be subscribed by listeners that occurs only when the particular event can be fired.
+
+Event Bubbling :
+
+Event Bubbling is the event starts from the deepest element or target element to its parents, then all its ancestors which are on the way to bottom to top.
+At present, all the modern browsers have event bubbling as the default way of event flow
+
+Stop Event Bubbling :
+
+If you want to stop the event bubbling, this can be achieved by the use of the event.
+stopPropagation() method. If you want to stop the event flow from event target to top element in DOM, 
+event.stopPropagation() method stops the event to travel to the bottom to top.
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Event Bubbling</title>
+</head>
+<body>
+  <div id="parent">
+    <button id="child" onclick="event.stopPropagation()">Child</button>
+  </div>
+  
+  <script>
+    var parent = document.querySelector('#parent');
+    <!-- Add click event on parent div -->
+      parent.addEventListener('click', function(){
+        console.log("Parent clicked");
+      });
+    var child = document.querySelector('#child');
+    <!-- Add click event on child button -->
+      child.addEventListener('click', function(){
+        console.log("Child clicked");
+      });
+  </script>
+</body>
+</html>
