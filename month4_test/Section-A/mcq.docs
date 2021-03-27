@@ -1,0 +1,98 @@
+
+1. Which of the following was NOT a newly added element in HTML5?
+
+a. article
+b. audio
+c. nav
+d. frameset
+
+Ans -  d. frameset
+
+2. Which element may be used within content to represent material that is tangential?
+
+a. aside
+b. cite
+c. article
+d. class
+
+Ans – a. aside
+
+3. In HTML Audio/Video DOM, ____ sets or returns the CORS settings of the audio/video.
+
+a. autoplay
+b. buffered
+c. preload
+d. controller
+
+Ans - b. buffered  , actually answer must be ->  crossOrigin
+
+
+4. What is the use of “defer” attribute?
+
+a. It defers rendering of HTML page.
+b. It defers script execution until the page has been rendered.
+c. It defers rendering of CSS attributes
+d. It request for the script asynchronously.
+
+Ans - b. It defers script execution until the page has been rendered.
+
+
+
+5. A _____ is used to define a special state of an element.
+
+a. pseudo-tag
+b. pseudo-element
+c. pseudo-class
+d. pseudo-id
+
+Ans - c. pseudo-class
+
+6. Which of the following CSS property can be used to provide the flex-direction and flex-wrap properties?
+
+a. flex
+b. flex-flow
+c. flex-wrap
+d. all of the mentioned
+
+Ans - b. flex-flow
+
+
+7. As a general rule, properties in CSS inherit from _____ elements
+
+a. child to parent
+b. parent to child
+c. grandparents to parents d. None of the above
+c. Lexical d. Sequential
+
+Ans - b. parent to child
+
+
+8. What kind of scoping does JavaScript use?
+
+a. Literal
+b. Segmentalc. 
+c. Lexical
+d. Sequential
+
+
+Ans - c. Lexical
+
+
+9. Which function among the following lets to register a function to be invoked once?
+
+a. setTimeout()
+b. setTotalTime()
+c. setInterval()
+d. setIntervalTime()
+
+Ans - a. setTimeout()
+
+
+10. Which property is used to obtain browser vendor and version information?
+
+a. modal
+b. version
+c. browser
+d. navigator
+
+Ans -d. navigator
